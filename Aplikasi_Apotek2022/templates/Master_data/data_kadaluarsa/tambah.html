@@ -1,0 +1,118 @@
+{% include 'head_atas.html' %}
+{% include 'sub_menu.html' %}
+
+<section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">TAMBAH DATA KADALUARSA OBAT</h3><hr>
+                <form method="get">
+                <div class="form-group">
+                  <label>Select Data Obat</label>
+                   <select class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;" name="cari_data" onchange="this.form.submit();">
+                    <option value="">--Select Data--</option>
+                    {% for tampil in select_data %}
+                    <option value="{{tampil.id}}">{{tampil.nama_kategori}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </form>
+<hr>
+
+{% for tampil in data_obat %}
+<div class="row">
+<div class="col-6">
+   <div class="card card-primary card-outline">
+<h5>
+<img src="/static/icon/obat.png" style="width:70px">
+  <u>LIST DATA OBAT</u></h5><hr>
+<table class="table">
+  <tr>
+    <td>   
+    <!-- class="profile-user-img img-fluid img-circle"    -->
+      <img  src="{{ tampil.gambar.url }}" alt="User profile picture" style="width: 90px">
+    </td>
+    <td>
+    <table class="table">
+      <tr>
+        <td>
+           <b>Nama Obat : </b> <a class="float-right"> {{tampil.nama_kategori}}</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>Nama Harga : </b> <a class="float-right"> {{tampil.harga}}</a>
+        </td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+</table>
+<b>Keterangan :</b>
+<p>{{tampil.keterangan}}</p>
+</div>
+</div>
+<div class="col-6">
+   <div class="card card-primary card-outline">
+<b><i class="fas fa-edit"></i> Input Data</b>
+<form method="post">
+    {% csrf_token%}
+    <input type="hidden" name="nama_obat" value="{{tampil.nama_kategori}}">
+             <table class="table">
+             <tr>
+             <td><label>Kode Kadaluarsa</label>
+             <input type="text" name="kode_kadar" class="form-control" value="KD-{{kode_otomatis}}" readonly="readonly"/>
+             </td>
+             </tr>             
+             <tr>
+             <td><label>Nama Suplier</label>
+             <select class="form-control" name="nama_suplier" required>
+              <option value="">--Select Data--</option>
+              {% for select in select_suplier %}
+              <option>{{select.nama_suplier}}</option>
+              {% endfor %}
+             </select>
+             </td>
+           </tr><tr>
+             <td><label>Tanggal Kadaluarsa</label>
+             <input type="text" name="tanggal_kadar" class="form-control" required />
+             </td>
+             </tr>    
+             <tr>
+             <td><label>Status</label>
+             <select class="form-control" name="status" required>
+              <option value="">--Select Data--</option>
+              <option>Kadaluarsa</option>
+              <option>Baik</option>
+             </select>
+             </td>
+             </tr>    
+             <tr>
+             <td>
+             <button type="submit" class="btn btn-success btn-circle" title="Button Simpan"><i class="fa fa-save"></i>&nbsp;&nbsp;Submit</button>
+             <a href="{% url 'kadar' %}" title="Button Kembali" class="btn btn-danger btn-circle">
+ <i class="fa fa-close">Kembali</i>
+                  </a></td>
+             </tr>
+             </table>
+  
+</form>
+</div>
+</div>
+</div>            
+{% endfor %}
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
+</div>
+</section>
+
+{% include 'head_bawah.html' %}

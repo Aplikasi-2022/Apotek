@@ -1,0 +1,42 @@
+{% include 'head_atas.html' %}
+{% include 'sub_menu.html' %}
+
+<section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-7">          
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">EDIT DATA SATUAN</h3><br>
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token%}
+             <table class="table">
+             <tr>
+             <td><label>Kode Satuan</label>
+             <input type="text" name="kode_satuan" class="form-control" value="{{edit_data.kode_satuan}}" readonly="readonly"/>
+             </td>
+             </tr>             
+             <tr>
+             <td><label>Nama Satuan</label>
+             <input type="text" name="nama_satuan" class="form-control" placeholder='Masukkan Nama Satuan' required value="{{edit_data.nama_satuan}}" />
+             </td>
+             <tr>
+             <td>
+             <button type="submit" class="btn btn-success btn-circle" title="Button Simpan"><i class="fa fa-save"></i>&nbsp;&nbsp;Submit</button>
+             <a href="{% url 'satuan' %}" title="Button Kembali" class="btn btn-danger btn-circle">
+ <i class="fa fa-close">Kembali</i>
+                  </a></td>
+             </tr>
+             </table>
+             </form>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+{% include 'head_bawah.html' %}

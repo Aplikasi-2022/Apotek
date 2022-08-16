@@ -1,0 +1,78 @@
+{% include 'head_atas.html' %}
+{% include 'sub_menu.html' %}
+<script type="text/javascript">
+  function sum(){
+    var harga=document.getElementById('harga').value;
+    var jumlah=document.getElementById('jumlah').value;
+    var result =(parseInt(harga) * parseInt(jumlah));
+    if (!isNaN(result)){
+      document.getElementById('total').value = result;
+    }
+  }
+</script>
+<section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-7">          
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">TAMBAH DATA PEMBELIAN OBAT DI SUPLIER, <b>{{proses.nama_suplier}}</b>
+                  <hr>
+                  <b>Lokasi Suplier : {{proses.lokasi}}</b>
+                </h3>
+                <br>
+<form method="post" enctype="multipart/form-data">
+	{% csrf_token%}
+  <input type="hidden" name="kode_suplier" class="form-control" placeholder='Masukkan Kode Suplier' readonly value="{{proses.kode_suplier}}" />
+  <input type="hidden" name="nama_suplier" class="form-control" placeholder='Masukkan Nama Suplier' value="{{proses.nama_suplier}}" readonly />
+             <table class="table">
+             <tr>
+             <td><label>Nota</label>
+             <input type="text" name="nota" class="form-control" value="NT-{{kode_otomatis}}" readonly="readonly"/>
+             </td>
+             </tr>             
+             <tr>
+             <td><label>Nama Pembelian</label>
+             <input type="text" name="nama_pembelian" class="form-control" placeholder='Masukkan Nama Pembelian' required/>
+             </td>
+           </tr>
+             <tr>
+             <td><label>Tanggal Pembelian</label>
+             <input type="text" name="tgl_pembelian" class="form-control" placeholder='Masukkan Tanggal Pembelian' required/>
+             </td>
+           </tr>
+           <tr>
+             <td><label>Harga Pembelian</label>
+             <input type="text" name="harga" class="form-control" placeholder='0' required onkeyup="sum();" id="harga" />
+             </td>
+           </tr>
+           <tr>
+             <td><label>Jumlah Pembelian</label>
+             <input type="number" name="jumlah" class="form-control" placeholder='Masukkan Jumlah Pembelian' required onkeyup="sum();" id="jumlah" />
+             </td>
+           </tr>
+           <tr>
+             <td><label>Total Pembelian</label>
+             <input type="text" name="total" class="form-control" placeholder='0' required onkeyup="sum();" id="total" readonly />
+             </td>
+           </tr>
+             <tr>
+             <tr>
+             <td>
+             <button type="submit" class="btn btn-success btn-circle" title="Button Simpan"><i class="fa fa-save"></i>&nbsp;&nbsp;Submit</button>
+             <a href="{% url 'suplier' %}" title="Button Kembali" class="btn btn-danger btn-circle">
+ <i class="fa fa-close">Kembali</i>
+                  </a></td>
+             </tr>
+             </table>
+             </form>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+{% include 'head_bawah.html' %}

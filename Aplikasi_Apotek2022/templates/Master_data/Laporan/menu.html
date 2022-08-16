@@ -1,0 +1,130 @@
+{% include 'head_atas.html' %}
+{% include 'sub_menu.html' %}
+<section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3><img src="/static/icon/lp.png" style="width:50px"> 
+                  <u><b style="font-size: 15px">Cetak Pembuatan Laporan</b></u>
+                </h3>
+                <p>Laporan Data Obat</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a href="{% url 'lp_obat' %}" target="_blank" class="small-box-footer">Print Laporan <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-6">
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3><img src="/static/icon/lp.png" style="width:50px"> 
+                  <u><b style="font-size: 15px">Cetak Pembuatan Laporan</b></u>
+                </h3>
+                <p>Laporan Data Suplier</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a href="{% url 'lp_suplier' %}" target="_blank" class="small-box-footer">Print Laporan <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-6">
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3><img src="/static/icon/lp.png" style="width:50px"> 
+                  <u><b style="font-size: 15px">Cetak Pembuatan Laporan</b></u>
+                </h3>
+                <p>Laporan Data Kadaluarsa Obat</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a href="{% url 'lp_kadaluarsa' %}" target="_blank" class="small-box-footer">Print Laporan <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+                
+</div>
+</div>
+<hr>
+<h5 class="mb-2">*Buat Laporan Penjualan Dan Pembelian</h5>
+        <div class="row">
+          <div class="col-md-5 col-sm-6 col-12">
+            <div class="info-box">
+              
+              <span class="info-box-icon bg-warning">
+                <a href="{% url 'lp_pembelian' %}" target="_blank">
+                <b style="font-size: 14px">(All)</b>
+                 <i class="fa fa-print"></i>
+               </a>
+               </span>
+             
+
+              <div class="info-box-content">
+                <span class="info-box-text">
+                  <u>Cetak Pembelian Obat Suplier
+                  </u>
+                  </span>
+                <span class="info-box-number">
+                  Berdasarkan Tanggal*
+                  <form method="get" action="{% url 'lp_pembelian_tgl' %}" target="_blank">
+                    <table>
+                      <tr>
+                        <td>
+                          <input type="text" name="cari_data" class="form-control" placeholder="Tanggal Dari">
+                        </td>
+                        <td>
+                          <button type="submit" class="btn btn-info"><i class="fa fa-print"></i> Cetak New</button>
+                        </td>
+                      </tr>
+                    </table>
+                  </form>
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <div class="col-md-5 col-sm-6 col-12">
+            <div class="info-box">
+              
+              <span class="info-box-icon bg-warning">
+                <a href="{% url 'lp_penjualan' %}" target="_blank">
+                <b style="font-size: 14px">(All)</b>
+                 <i class="fa fa-print"></i>
+               </a>
+               </span>
+             
+
+              <div class="info-box-content">
+                <span class="info-box-text">
+                  <u>Cetak Penjualan Obat
+                  </u>
+                  </span>
+                <span class="info-box-number">
+                  Berdasarkan Tanggal*
+                  <form method="get" action="{% url 'lp_penjualan_tgl' %}" target="_blank">
+                    <table>
+                      <tr>
+                        <td>
+                          <input type="text" name="cari_data" class="form-control" placeholder="Tanggal Dari">
+                        </td>
+                        <td>
+                          <button type="submit" class="btn btn-info"><i class="fa fa-print"></i> Cetak New</button>
+                        </td>
+                      </tr>
+                    </table>
+                  </form>
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+        </div>
+
+</section>          
+{% include 'head_bawah.html' %}

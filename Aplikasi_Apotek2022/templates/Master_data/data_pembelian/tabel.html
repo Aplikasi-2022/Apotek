@@ -1,0 +1,74 @@
+{% include 'head_atas.html' %}
+{% include 'sub_menu.html' %}
+
+{% if messages %}
+{% for info in messages %}
+<script>alert('{{info}}');location='{% url "pembelian" %}';</script>
+{% endfor %}
+{% endif %}
+<section class="content">
+      <div class="container-fluid">
+ <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title"><b>DAFTAR DATA PEMBELIAN OBAT</b></h3>
+                <div class="card-tools">
+                  <div align="right">
+                  <a href="{% url 'tambah_pembelian' %}" class="btn btn-success btn-sm"> <i class="fa fa-plus"></i> Tambah Data</a>
+                </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0" style="height: 300px;">
+              <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                <td width="50px">No</td>
+                <td>Nota</td>
+                <td>Nama Pembelian</td>
+                <td>Kode Suplier</td>
+                <td>Nama Suplier</td>
+                <td>Tanggal Pembelian</td>
+                <td>Harga</td>
+                <td>Jumlah</td>
+                <td>Total</td>
+                <td>Aksi</td>
+                    </tr>
+                  </thead>
+                  <tbody>                  
+          {% for tampil in data %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{tampil.nota}}</td>
+                    <td>{{tampil.nama_pembelian}}</td>
+                    <td>{{tampil.kode_suplier}}</td>
+                    <td>{{tampil.nama_suplier}}</td>
+                    <td>{{tampil.tgl_pembelian}}</td>
+                    <td>{{tampil.harga}}</td>
+                    <td>{{tampil.jumlah}}</td>
+                    <td>{{tampil.total}}</td>
+<td>
+<a href="{% url 'edit_pembelian' tampil.id %}" class="btn btn-xs btn-warning" title="Edit" onclick="return confirm('Apakah Anda Yakin Ingin Mengedit Data')">
+      <i class="ace-icon fa fa-edit bigger-130"></i> Edit
+      </a>
+<a href="{% url 'hapus_pembelian' tampil.id %}" class="btn btn-xs btn-danger" title="Hapus" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data')">
+      <i class="ace-icon fa fa-trash bigger-130"></i> Hapus
+      </a>    
+  </td>                                  
+                  </tr>
+          {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+
+{% include 'head_bawah.html' %}

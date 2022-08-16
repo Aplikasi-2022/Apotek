@@ -1,0 +1,94 @@
+<!<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Cetak Transaksi</title>
+  <link href="/static/js_print/styles.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    .table {
+    border-collapse: collapse;
+    width: 100%;
+    }
+    .table, .th, .td {
+        border: 1px solid blue;
+    }
+    .td {
+    padding: 10px;
+    text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div align="center">
+<div id="container" style="width:500px">
+<div id="body"> 
+<div align="center">
+<h2>
+  <table>
+    <tr>
+      <td>
+        <img src="/static/icon/logo.png" style="width:70px">
+      </td>
+      <td>
+        <b>TRANSAKSI APOTIK</b><br>
+<h5>Jl.Probolinggo, Kec. kraksaan</h5>
+      </td>
+    </tr>
+  </table>
+  </h2>
+<h4><strong><u>TRANSAKSI OBAT APOTIK</u></strong></h4>
+</div>
+ <!-- table-bordered table-striped -->
+<table id="example1" class="table">
+                <thead>
+                  <tr>
+                    <th>No-Transaksi</th><th>:</th><th>{{nota_data.nota_penjualan}}</th>
+                  </tr>
+                  <tr>
+                    <th>Tanggal Transaksi</th><th>:</th><th>{{nota_data.tanggal}}</th>
+                  </tr>
+
+                  <tr>
+                    <th>Kategori</th><th>:</th><th>{{nota_data.nama_kategori}}</th>
+                  </tr>
+                </thead>
+</table>
+<h4>* Transaksi Penjualan Obat :</h4><hr>
+<div align="center">
+<table>
+  <tr>
+    <th align="left">Harga Obat</th><th>:</th><th align="left">Rp. {{nota_data.harga}}</th>
+  </tr>
+  <tr>
+    <th align="left">Jumlah Obat</th><th>:</th><th align="left">{{nota_data.jumlah}}</th>
+  </tr>
+  <tr>
+    <th align="left">Total Obat</th><th>:</th><th>Rp. {{nota_data.total}}</th>
+  </tr>
+</table>
+</div>
+------------------------------------------------------------------------------------------------------------
+<div align="right">
+<table>
+  <tr>
+    <th>*Bayar Obat</th><th>:</th><th>Rp. {{nota_data.bayar}}</th>
+  </tr>
+  <tr>
+    <th>*Kembalian</th><th>:</th><th>Rp. {{nota_data.kembalian}}</th>
+  </tr>
+</table>
+</div>
+<br>
+<hr>
+<div align="center">
+<h3>
+  APOTEK BUNDA SIDOPEKSO KRAKSAAN<br>
+KABUPATEN PROBOLINGGO, KECAMATAN KRAKSAAN
+</h3>
+</div>
+
+</div>
+</div>
+</div>
+</body>
+</html>

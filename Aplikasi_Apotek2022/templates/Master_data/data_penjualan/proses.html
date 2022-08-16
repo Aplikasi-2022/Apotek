@@ -1,0 +1,131 @@
+{% include 'head_atas.html' %}
+{% include 'sub_menu.html' %}
+<script type="text/javascript">
+  function sum(){
+    var harga=document.getElementById('harga').value;
+    var jumlah=document.getElementById('jumlah').value;
+    var result =(parseInt(harga) * parseInt(jumlah));
+    if (!isNaN(result)){
+      document.getElementById('total').value = result;
+    }
+  }
+</script>
+
+<script type="text/javascript">
+  function sum_bayar(){
+    var total=document.getElementById('total').value;
+    var bayar=document.getElementById('bayar').value;
+    var result =(parseInt(total) - parseInt(bayar));
+    if (!isNaN(result)){
+      document.getElementById('kembalian').value = result;
+    }
+  }
+</script>
+
+  <section class="content">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">PROSES PENJUALAN OBAT</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="inputName">Nota</label>
+                <input type="text" id="inputName" class="form-control" value="N-330{{kode_otomatis}}" readonly>
+              </div>
+              <div class="form-group">
+                <label for="inputDescription">List Obat</label>
+                <table class="table table-bordered">
+                	<tr>
+                		<td>Kode Obat</td><td>:</td><td>{{proses_data.kode_obat}}</td>
+                	</tr>
+                	<tr>
+                		<td>Nama Obat</td><td>:</td><td>{{proses_data.nama_obat}}</td>
+                	</tr>
+                	<tr>
+                		<td>Kategori Obat</td><td>:</td><td>{{proses_data.nama_kategori}}</td>
+                	</tr>
+                </table>
+              </div>
+              <div class="form-group">
+                <label for="inputStatus"><u>Harga Jual</u> :</label>
+                <h3>
+                <b>
+                Rp. {{proses_data.harga_jual}}
+            	</b>
+            	</h3>
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+
+        <div class="col-md-6">
+          <div class="card card-secondary">
+            <div class="card-header">
+              <form method="post" enctype="multipart/form-data">
+                {% csrf_token%}
+              <h3 class="card-title">INPUT TRANSAKSI</h3>              
+              <input type="hidden" id="inputName" class="form-control" name="nota_penjualan" value="N330-{{kode_otomatis}}" readonly>
+              <input type="hidden" name="harga" value="{{proses_data.harga_jual}}" onkeyup="sum();" id="harga">
+              <input type="hidden" name="kode_obat" value="{{proses_data.kode_obat}}">
+              <input type="hidden" name="nama_obat" value="{{proses_data.nama_obat}}">
+              <input type="hidden" name="nama_kategori" value="{{proses_data.nama_kategori}}">
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="inputEstimatedBudget">Jumlah</label>
+                <input type="number" class="form-control" name="jumlah" placeholder="0" onkeyup="sum();" id="jumlah">
+              </div>
+              <div class="form-group">
+                <label for="inputSpentBudget">Total</label>
+                <input type="text" class="form-control" name="total" style="height: 70px; font-size: 50px;" readonly placeholder="0" onkeyup="sum();" id="total">
+              </div>
+              <div class="form-group">
+                <table class="table">
+                	<tr>
+                		<td>
+                		<label for="inputEstimatedDuration">*Bayar</label>
+                		<input type="text" class="form-control" name="bayar" onkeyup="sum_bayar();" id="bayar">
+                  </td>
+                		<td>
+                			<label for="inputEstimatedDuration">*Kembalian</label>
+                			<input type="text" class="form-control" name="kembalian" readonly onkeyup="sum_bayar();" id="kembalian">
+                		</td>
+                	</tr>
+                </table>
+              </div>
+              <div class="form-group">
+                <label for="inputEstimatedDuration">Tanggal Transaksi</label>
+                <input type="text" id="inputEstimatedDuration" class="form-control" name="tanggal">
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <a href="{% url 'penjualan' %}" class="btn btn-secondary">Cancel</a>
+          <input type="submit" value="Create new Transaksi" class="btn btn-success float-right">
+        </div>
+      </div>
+      </form>
+    </section>
+    <!-- /.content -->
+
+{% include 'head_bawah.html' %}

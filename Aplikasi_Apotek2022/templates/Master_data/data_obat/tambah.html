@@ -1,0 +1,91 @@
+{% include 'head_atas.html' %}
+{% include 'sub_menu.html' %}
+
+<section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                <img src="/static/icon/obat.png" style="width: 50px">
+                TAMBAH DATA OBAT</h3><br>
+
+<form method="post" enctype="multipart/form-data">
+	{% csrf_token%}
+             <table class="table">
+             <tr>
+             <td><label>Kode Obat</label>
+             <input type="text" name="kode_obat" class="form-control" value="OT-{{kode}}" maxlength="16" />
+             </td>
+             </tr>             
+             <tr>
+             <td><label>Nama Obat</label>
+             <input type="text" name="nama_obat" class="form-control" placeholder='Masukkan Nama Obat' required/>
+             </td>
+            </tr>
+             <tr>
+             <td><label>Suplier</label>
+             <select class="form-control" name="nama_suplier" required>
+              <option value="">--Select Data--</option>
+              {% for select in select_suplier %}
+              <option>{{select.nama_suplier}}</option>
+              {% endfor %}
+             </select>
+             </td>
+            </tr>
+             <tr>
+             <td><label>Kategori</label>
+             <select class="form-control" name="nama_kategori" required>
+              <option value="">--Select Data--</option>
+              {% for select in select_kategori %}
+              <option>{{select.nama_kategori}}</option>
+              {% endfor %}
+             </select>
+             </td>
+            </tr>
+             <tr>
+             <td><label>Satuan</label>
+             <select class="form-control" name="nama_satuan" required>
+              <option value="">--Select Data--</option>
+              {% for select in select_satuan %}
+              <option>{{select.nama_satuan}}</option>
+              {% endfor %}
+             </select>
+             </td>
+            </tr>
+             <tr>
+             <td><label>Harga Beli</label>
+             <input type="text" name="harga_beli" class="form-control" placeholder='Masukkan Harga Beli' required/>
+             </td>
+            </tr>
+             <tr>
+             <td><label>Harga Jual</label>
+             <input type="text" name="harga_jual" class="form-control" placeholder='Masukkan Harga Jual' required/>
+             </td>
+            </tr>
+             <tr>
+             <td><label>Stock</label>
+             <input type="text" name="stock" class="form-control" placeholder='Masukkan Stock' required/>
+             </td>
+            </tr>
+
+             <tr>
+             <td>
+             <button type="submit" class="btn btn-success btn-circle" title="Button Simpan"><i class="fa fa-save"></i>&nbsp;&nbsp;Submit</button>
+             <a href="{% url 'obat' %}" title="Button Kembali" class="btn btn-danger btn-circle">
+ <i class="fa fa-close">Kembali</i>
+                  </a></td>
+             </tr>
+             </table>
+             </form>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+{% include 'head_bawah.html' %}

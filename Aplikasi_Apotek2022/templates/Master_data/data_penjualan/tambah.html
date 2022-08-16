@@ -1,0 +1,65 @@
+{% include 'head_atas.html' %}
+{% include 'sub_menu.html' %}
+
+<section class="content">
+  <div align="right">
+<h5 class="card-title1"><b>DAFTAR PENJUALAN PADA OBAT DI APOTIK</b>
+                  <img src="/static/icon/jual.png" style="width: 190px">
+</h5>
+</div>
+      <div class="container-fluid">
+ <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <!-- title -->
+                <div class="card-tools">
+                  <div align="right">
+                    <br>
+                  <h5>Proses Transaksi Penjualan Obat Di Apotik</h5>
+                </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0" style="height: 300px;">
+              <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                <td width="50px">No</td>
+                <td>Nama Obat</td>
+                <td>Kategori</td>
+                <td>Satuan</td>
+                <td>Harga Jual</td>
+                <td>Aksi</td>
+                    </tr>
+                  </thead>
+                  <tbody>                  
+          {% for tampil in data %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{tampil.nama_obat}}</td>
+                    <td>{{tampil.nama_kategori}}</td>
+                    <td>{{tampil.nama_satuan}}</td>
+                    <td>{{tampil.harga_jual}}</td>                    
+<td>
+<a href="{% url 'proses_penjualan' tampil.id %}" class="btn btn-xs btn-warning" title="Edit" onclick="return confirm('Apakah Anda Yakin Ingin Mengedit Data')">
+      <i class="ace-icon fa fa-edit bigger-130"></i> Proses Jual
+      </a>
+
+  </td>                                  
+                  </tr>
+          {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+
+{% include 'head_bawah.html' %}

@@ -1,0 +1,58 @@
+<!<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Laporan</title>
+  <link href="/static/js_print/styles.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    table {
+    border-collapse: collapse;
+    width: 100%;
+    }
+    table, th, td {
+        border: 1px solid blue;
+    }
+    td {
+    padding: 10px;
+    text-align: left;
+    }
+  </style>
+</head>
+<body>
+<div id="container">
+<div id="body"> 
+<div align="center">
+<h2>APOTEK BUNDA SIDOPEKSO </h2>
+<h3>Jl.Probolinggo, Kec.Kraksaan </h3>
+<h4><strong><u>LAPORAN DATA SUPLIER</u></strong></h4>
+</div>
+<table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                <td width="50px">No</td>
+                <td>Kode Suplier</td>
+                <td>Nama Suplier</td>
+                <td>Lokasi</td>
+                <td>Telp</td>
+                <td>E-mail</td>
+                <td>Alamat</td>
+                    </tr>
+                  </thead>
+                  <tbody>                  
+          {% for tampil in data %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{tampil.kode_suplier}}</td>
+                    <td>{{tampil.nama_suplier}}</td>
+                    <td>{{tampil.lokasi}}</td>
+                    <td>{{tampil.telp}}</td>
+                    <td>{{tampil.email}}</td>
+                    <td>{{tampil.alamat}}</td>                                  
+                  </tr>
+          {% endfor %}
+                  </tbody>
+                </table>
+</div>
+</div>
+</body>
+</html>

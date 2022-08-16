@@ -1,0 +1,63 @@
+{% include 'head_atas.html' %}
+{% include 'sub_menu.html' %}
+
+<section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-7">          
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">TAMBAH DATA SUPLIER</h3><br>
+
+<form method="post" enctype="multipart/form-data">
+	{% csrf_token%}
+             <table class="table">
+             <tr>
+             <td><label>Kode Suplier</label>
+             <input type="text" name="kode_suplier" class="form-control" value="SP-{{kode_otomatis}}" readonly="readonly"/>
+             </td>
+             </tr>             
+             <tr>
+             <td><label>Nama Suplier</label>
+             <input type="text" name="nama_suplier" class="form-control" placeholder='Masukkan Nama Suplier' required/>
+             </td>
+             </tr>
+             <tr>
+             <td><label>Lokasi</label>
+             <input type="text" name="lokasi" class="form-control" placeholder='Masukkan Lokasi' required/>
+             </td>
+            </tr>
+             <tr>
+             <td><label>Telp</label>
+             <input type="text" name="telp" class="form-control" placeholder='Masukkan Nomor Telp' required/>
+             </td>
+            </tr>
+             <tr>
+             <td><label>E-mail</label>
+             <input type="email" name="email" class="form-control" placeholder='Masukkan E-mail' required/>
+             </td>
+            </tr>
+             <tr>
+             <td><label>Alamat</label>
+             <input type="text" name="alamat" class="form-control" placeholder='Masukkan Alamat' required/>
+             </td>
+            </tr>
+             <tr>
+             <td>
+             <button type="submit" class="btn btn-success btn-circle" title="Button Simpan"><i class="fa fa-save"></i>&nbsp;&nbsp;Submit</button>
+             <a href="{% url 'suplier' %}" title="Button Kembali" class="btn btn-danger btn-circle">
+ <i class="fa fa-close">Kembali</i>
+                  </a></td>
+             </tr>
+             </table>
+             </form>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+{% include 'head_bawah.html' %}

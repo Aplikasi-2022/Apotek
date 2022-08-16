@@ -1,0 +1,68 @@
+{% include 'head_atas.html' %}
+{% include 'sub_menu.html' %}
+
+<section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-7">          
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">EDIT DATA KADALUARSA</h3><br>
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token%}
+             <table class="table">
+             <tr>
+             <td><label>Kode Kadaluarsa</label>
+             <input type="text" name="kode_kadar" class="form-control" value="{{edit_data.kode_kadar}}" readonly="readonly"/>
+             </td>
+             </tr>             
+             <tr>
+             <td><label>Nama Obat</label>
+             <input type="text" name="nama_obat" class="form-control" readonly="readonly" value="{{edit_data.nama_obat}}" />
+             </td>
+             </tr>             
+             <tr>
+             <td><label>Nama Suplier</label>
+             <select class="form-control" name="nama_suplier" required>
+              <option>{{edit_data.nama_suplier}}</option>
+              <option value="">--Select Data--</option>
+              {% for select in select_suplier %}
+              <option>{{select.nama_suplier}}</option>
+              {% endfor %}
+             </select>
+             </td>
+           </tr><tr>
+             <td><label>Tanggal Kadaluarsa</label>
+             <input type="text" name="tanggal_kadar" class="form-control" required value="{{edit_data.tanggal_kadar}}" />
+             </td>
+             </tr>    
+             <tr>
+             <td><label>Status</label>
+             <select class="form-control" name="status" required>
+              <option>{{edit_data.status}}</option>
+              <option value="">--Select Data--</option>
+              <option>Kadaluarsa</option>
+              <option>Baik</option>
+             </select>
+             </td>
+             </tr>    
+             <tr>
+             <td>
+             <button type="submit" class="btn btn-success btn-circle" title="Button Simpan"><i class="fa fa-save"></i>&nbsp;&nbsp;Submit</button>
+             <a href="{% url 'kadar' %}" title="Button Kembali" class="btn btn-danger btn-circle">
+ <i class="fa fa-close">Kembali</i>
+                  </a></td>
+             </tr>
+             </table>
+             </form>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+{% include 'head_bawah.html' %}
